@@ -5,7 +5,7 @@ on:
     - cron: "0 0 * * 1"
   push:
     branches:
-      - master
+      - main
     paths:
       - steamcmd/**
 jobs:
@@ -20,7 +20,7 @@ jobs:
           - ubuntu
           - dotnet
           - proton
-          - proton_8   
+          - proton_8
           - sniper
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v5
         with:
           context: ./steamcmd
           file: ./steamcmd/${{ matrix.distro }}/Dockerfile
