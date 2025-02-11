@@ -39,5 +39,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/pelican-eggs/steamcmd:${{ matrix.distro }}
-            ghcr.io/parkervcp/steamcmd:${{ matrix.distro }}
+            ghcr.io/pastanetwork/steamcmd:${{ matrix.distro }}
