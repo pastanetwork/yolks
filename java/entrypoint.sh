@@ -34,16 +34,16 @@ export INTERNAL_IP
 cd /home/container || exit 1
 
 # Print Java version
-printf "\033[1m\033[33mcontainer@pelican~ \033[0mjava -version\n"
+printf "\033[1m\033[33mroot@pastanetwork:~ \033[0mjava -version\n"
 java -version
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
 # replacing the values.
-PARSED=$(echo "$STARTUP" | sed -e 's/{{/${/g' -e 's/}}/}/g')
+PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
-# Display the command we're running in the output, and then execute it with eval
-printf "\033[1m\033[33mcontainer@pelican~ \033[0m"
-echo "$PARSED"
+# Display the command we're running in the output, and then execute it with the env
+# from the container itself.
+printf "\033[1m\033[33mroot@pastanetwork:~ \033[0m%s\n" "$PARSED"
 # shellcheck disable=SC2086
-eval "$PARSED"
+eval ${PARSED}
