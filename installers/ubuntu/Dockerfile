@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH ubuntu:22.04
+FROM        --platform=$TARGETOS/$TARGETARCH ubuntu:24.04
 
 LABEL       author="oliver194" maintainer="100048880+oliver194@users.noreply.github.com"
 
