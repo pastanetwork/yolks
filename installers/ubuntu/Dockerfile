@@ -29,7 +29,6 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND=noninteractive
 
-RUN          apt update \
-        && apt install -y --reinstall libc-bin \
-        && apt upgrade -y \
-        && apt -y --no-install-recommends install ca-certificates curl git unzip zip tar jq
+RUN         apt update \
+		&& apt upgrade -y \
+		&& apt -y --no-install-recommends install ca-certificates curl git unzip zip tar jq
