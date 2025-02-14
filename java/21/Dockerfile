@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy
+FROM        --platform=$TARGETOS/$TARGETARCH openjdk:21-jdk-slim
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
