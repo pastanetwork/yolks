@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH openjdk:19-jdk
+FROM        --platform=$TARGETOS/$TARGETARCH openjdk:19-jdk-slim
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
