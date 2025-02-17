@@ -30,13 +30,14 @@ jobs:
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: pastanetwork
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v5
+      - uses: docker/build-push-action@v6
         with:
           context: ./steamcmd
           file: ./steamcmd/${{ matrix.distro }}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/pastanetwork/steamcmd:${{ matrix.distro }}
+            ghcr.io/pelican-eggs/steamcmd:${{ matrix.distro }}
+            ghcr.io/parkervcp/steamcmd:${{ matrix.distro }}

@@ -27,6 +27,8 @@ jobs:
       - uses: actions/checkout@v4
             # Setup QEMU for ARM64 Build
       - uses: docker/setup-qemu-action@v3
+        with:
+          image: tonistiigi/binfmt:qemu-v7.0.0-28
       - uses: docker/setup-buildx-action@v3
         with:
           buildkitd-flags: --debug
@@ -34,7 +36,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.REGISTRY_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
           context: ./dotnet
@@ -42,5 +44,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/pelican-eggs/yolks:dotnet_${{ matrix.tag }}
-            ghcr.io/parkervcp/yolks:dotnet_${{ matrix.tag }}
+            ghcr.io/${{ github.repository_owner }}/yolks:dotnet_${{ matrix.tag }}
+            ${{ github.repository_owner == 'pelican-eggs' && format('ghcr.io/parkervcp/yolks:dotnet_{0}', matrix.tag) || '' }}
