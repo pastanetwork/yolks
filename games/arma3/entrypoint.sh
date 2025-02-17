@@ -11,7 +11,7 @@ STEAMCMD_DIR="./steamcmd"                       # SteamCMD's directory containin
 WORKSHOP_DIR="./Steam/steamapps/workshop"       # SteamCMD's directory containing workshop downloads
 STEAMCMD_LOG="${STEAMCMD_DIR}/steamcmd.log"     # Log file for SteamCMD
 GAME_ID=107410                                  # SteamCMD ID for the Arma 3 GAME (not server). Only used for Workshop mod downloads.
-EGG_URL='https://github.com/parkervcp/eggs/tree/master/game_eggs/steamcmd_servers/arma/arma3'   # URL for Pterodactyl Egg & Info (only used as info to legacy users)
+EGG_URL='https://pterodactyleggs.com/egg/6735ff3e4924a4e9bbcb79b0'   # URL for Pterodactyl Egg & Info (only used as info to legacy users)
 
 # Color Codes
 CYAN='\033[0;36m'
@@ -288,11 +288,11 @@ if [[ ${UPDATE_SERVER} == 1 ]]; then
                     if [[ -n $latestUpdate ]] && [[ $latestUpdate =~ ^[0-9]+$ ]]; then # Notify last update date, if valid
                         echo -e "\tMod was last updated: ${CYAN}$(date -d @${latestUpdate})${NC}"
                     fi
-                    
+
                     # Delete SteamCMD appworkshop cache before running to avoid mod download failures
                     echo -e "\tClearing SteamCMD appworkshop cache..."
                     rm -f ${WORKSHOP_DIR}/appworkshop_$GAME_ID.acf
-                    
+
                     echo -e "\tAttempting mod update/download via SteamCMD...\n"
                     RunSteamCMD $modType $modID
                 fi

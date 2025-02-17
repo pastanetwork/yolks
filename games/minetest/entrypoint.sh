@@ -12,8 +12,8 @@ export INTERNAL_IP
 cd /home/container || exit 1
 
 # Print minetest version
-printf "\033[1m\033[33mcontainer@pelican~ \033[0mminetest --version\n"
-minetest --version
+printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mluanti --version\n"
+luanti --version
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
