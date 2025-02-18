@@ -82,8 +82,9 @@ else
 fi
 
 # Replace Startup Variables
-MODIFIED_STARTUP=$(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-echo -e ":/home/container$ ${MODIFIED_STARTUP}"
+MODIFIED_STARTUP=$(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
+PARSED=$(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
+echo -e ":/home/container$ ${PARSED}"
 
 # Run the Server
 eval ${MODIFIED_STARTUP}
