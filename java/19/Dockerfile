@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH openjdk:19-jdk-slim
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:19-jdk-alpine
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
