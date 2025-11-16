@@ -1,25 +1,28 @@
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17.0.17_10-jdk-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17-jdk-noble
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk update && apk add --no-cache \
+RUN         apt update -y \
+            && apt install -y \
                 curl \
                 lsof \
                 ca-certificates \
                 openssl \
                 git \
                 tar \
-                sqlite \
+                sqlite3 \
                 fontconfig \
                 tzdata \
                 iproute2 \
-                freetype \
+                libfreetype6 \
+                redis-tools \
                 tini \
-                zip \
-                unzip
+				zip \
+				unzip \
+                jq
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
@@ -31,5 +34,5 @@ STOPSIGNAL SIGINT
 
 COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
 RUN         chmod +x /entrypoint.sh
-ENTRYPOINT    ["/sbin/tini", "-g", "--"]
+ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
