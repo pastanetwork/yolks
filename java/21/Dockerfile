@@ -5,25 +5,24 @@ LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apt update -y \
-            && apt install -y \
+RUN         apk update && apk add --no-cache \
                 curl \
                 lsof \
                 ca-certificates \
                 openssl \
                 git \
                 tar \
-                sqlite3 \
+                sqlite \
                 fontconfig \
                 tzdata \
                 iproute2 \
-                libfreetype6 \
+                freetype \
                 tini \
-				zip \
-				unzip
+                zip \
+                unzip
 
 ## Setup user and working directory
-RUN         useradd -m -d /home/container -s /bin/bash container
+RUN         adduser -D -h /home/container -s /bin/sh container
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
@@ -32,5 +31,5 @@ STOPSIGNAL SIGINT
 
 COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
 RUN         chmod +x /entrypoint.sh
-ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+ENTRYPOINT    ["/sbin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
