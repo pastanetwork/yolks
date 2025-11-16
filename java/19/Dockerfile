@@ -23,7 +23,7 @@ RUN         apt update -y \
 				unzip
 
 ## Setup user and working directory
-RUN         useradd -m -d /home/container -s /bin/bash container
+RUN         adduser -D -h /home/container -s /bin/sh container
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
@@ -32,5 +32,5 @@ STOPSIGNAL SIGINT
 
 COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
 RUN         chmod +x /entrypoint.sh
-ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+ENTRYPOINT    ["/sbin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
