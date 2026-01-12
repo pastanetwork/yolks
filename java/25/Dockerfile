@@ -21,9 +21,9 @@ RUN         apt-get update -y \
                 iproute2 \
                 libfreetype6 \
                 tini \
-				        zip \
-				        unzip \
-			    && rm -rf /var/lib/apt/lists/*
+                zip \
+                unzip \
+            && rm -rf /var/lib/apt/lists/*
 
 ## Setup working directory and environment
 RUN         useradd -m -d /home/container -s /bin/bash container
