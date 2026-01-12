@@ -186,6 +186,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:java_21`
 * [`java22`](/java/22)
   * `ghcr.io/pastanetwork/yolks:java_22`
+* [`java25`](/java/25)
+  * `ghcr.io/pastanetwork/yolks:java_25`
 
 ### [MariaDB](/mariadb)
 
