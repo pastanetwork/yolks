@@ -11,9 +11,14 @@ export INTERNAL_IP
 # Switch to the container's working directory
 cd /home/container || exit 1
 
-# Print minetest version
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mluanti --version\n"
-luanti --version
+# Print luanti/minetest version
+if command -v luanti > /dev/null 2>&1; then
+    printf "\033[1m\033[33mroot@pastanetwork:~ \033[0mluanti --version\n"
+    luanti --version
+else
+    printf "\033[1m\033[33mroot@pastanetwork:~ \033[0mminetest --version\n"
+    minetest --version
+fi
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')

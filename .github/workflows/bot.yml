@@ -8,6 +8,9 @@ on:
       - master
     paths:
       - bot/**
+permissions:
+  packages: write
+
 jobs:
   pushArm:
     name: "yolks:bot_${{ matrix.tag }}"
@@ -21,28 +24,31 @@ jobs:
           - sinusbot
           - bastion
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
         with:
           buildkitd-flags: --debug
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         with:
-          image: tonistiigi/binfmt:qemu-v7.0.0-28
           platforms: arm64,amd64
       - name: Cache Docker layers
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      - uses: docker/login-action@v3
+      - id: lower-repo
+        name: Repository to lowercase
+        run: |
+          echo "repository=${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
+      - uses: docker/login-action@v4
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v6
+          username: ${{ steps.lower-repo.outputs.repository }}
+          password: ${{ secrets.REGISTRY_TOKEN || secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v7
         with:
           context: ./bot/${{ matrix.tag }}
           file: ./bot/${{ matrix.tag }}/Dockerfile
@@ -51,7 +57,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/yolks:bot_${{ matrix.tag }}
+            ghcr.io/${{ steps.lower-repo.outputs.repository }}/yolks:bot_${{ matrix.tag }}
             ${{ github.repository_owner == 'pelican-eggs' && format('ghcr.io/parkervcp/yolks:bot_{0}', matrix.tag) || '' }}
       - name: Move cache
         run: |
@@ -75,9 +81,9 @@ jobs:
   #     - uses: docker/login-action@v1
   #       with:
   #         registry: ghcr.io
-  #         username: ${{ github.repository_owner }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
-  #     - uses: docker/build-push-action@v6
+  #         username: ${{ steps.lower-repo.outputs.repository }}
+  #         password: ${{ secrets.REGISTRY_TOKEN || secrets.GITHUB_TOKEN }}
+  #     - uses: docker/build-push-action@v7
   #       with:
   #         context: ./bot/${{ matrix.tag }}
   #         file: ./bot/${{ matrix.tag }}/Dockerfile

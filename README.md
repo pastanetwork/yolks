@@ -1,6 +1,6 @@
 # Yolks
 
-A curated collection of core images that can be used with Pterodactyl's Egg system. Each image is rebuilt
+A curated collection of core images that can be used with Pelican's Egg system. Each image is rebuilt
 periodically to ensure dependencies are always up-to-date.
 
 Images are hosted on `ghcr.io` and exist under the `games`, `installers`, and `yolks` spaces. The following logic
@@ -9,10 +9,10 @@ is used when determining which space an image will live under:
 * `games` — anything within the `games` folder in the repository. These are images built for running a specific game
 or type of game.
 * `installers` — anything living within the `installers` directory. These images are used by install scripts for different
-Eggs within Pterodactyl, not for actually running a game server. These images are only designed to reduce installation time
+Eggs within Pelican, not for actually running a game server. These images are only designed to reduce installation time
 and network usage by pre-installing common installation dependencies such as `curl` and `wget`.
 * `yolks` — these are more generic images that allow different types of games or scripts to run. They're generally just
-a specific version of software and allow different Eggs within Pterodactyl to switch out the underlying implementation. An
+a specific version of software and allow different Eggs within Pelican to switch out the underlying implementation. An
 example of this would be something like Java or Python which are used for running bots, Minecraft servers, etc.
 
 All of these images are available for `linux/amd64` and `linux/arm64` versions, unless otherwise specified, to use
@@ -99,11 +99,13 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:dotnet_8`
 * [`dotnet9.0`](/dotnet/9)
   * `ghcr.io/pastanetwork/yolks:dotnet_9`
+* [`dotnet10.0`](/dotnet/10)
+  * `ghcr.io/pastanetwork/yolks:dotnet_10`  
 
 ### [Elixir](/elixir)
 
 * [`elixir 1.12`](/elixir/1.12)
-  * `ghcr.io/pastanetwork/yolks:elixir_1.12`
+  * `ghcr.io/pelican-eggsp/yolks:elixir_1.12`
 * [`elixir 1.13`](/elixir/1.13)
   * `ghcr.io/pastanetwork/yolks:elixir_1.13`
 * [`elixir 1.14`](/elixir/1.14)
@@ -130,6 +132,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/games:arma3`
 * [`dayz`](/games/dayz)
   * `ghcr.io/pastanetwork/games:dayz`
+* [`hytale`](/games/hytale)
+  * `ghcr.io/pastanetwork/games:hytale`
 * [`minetest`](/games/minetest)
   * `ghcr.io/pastanetwork/games:minetest`  
 * [`mohaa`](games/mohaa)
@@ -146,6 +150,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/games:thebattleforwesnoth`
 * [`valheim`](/games/valheim)
   * `ghcr.io/pastanetwork/games:valheim`
+* [`zandronum`](/games/zandronum)
+  * `ghcr.io/pastanetwork/games:zandronum`
 
 ### [Golang](/go)
 
@@ -188,6 +194,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:java_22`
 * [`java25`](/java/25)
   * `ghcr.io/pastanetwork/yolks:java_25`
+* [`java26`](/java/26)
+  * `ghcr.io/pastanetwork/yolks:java_26`
 
 ### [MariaDB](/mariadb)
 
@@ -214,14 +222,14 @@ is tagged correctly.
 
 ### [MongoDB](/mongodb)
 
-  * [`MongoDB 4`](/mongodb/4)
-    * `ghcr.io/pastanetwork/yolks:mongodb_4`
   * [`MongoDB 5`](/mongodb/5)
     * `ghcr.io/pastanetwork/yolks:mongodb_5`
  * [`MongoDB 6`](/mongodb/6)
     * `ghcr.io/pastanetwork/yolks:mongodb_6`    
  * [`MongoDB 7`](/mongodb/7)
     * `ghcr.io/pastanetwork/yolks:mongodb_7`
+ * [`MongoDB 8`](/mongodb/8)
+    * `ghcr.io/pastanetwork/yolks:mongodb_8` 
 
 ### [Mono](/mono)
 
@@ -230,18 +238,6 @@ is tagged correctly.
 
 ### [Nodejs](/nodejs)
 
-* [`node12`](/nodejs/12)
-  * `ghcr.io/pastanetwork/yolks:nodejs_12`
-* [`node14`](/nodejs/14)
-  * `ghcr.io/pastanetwork/yolks:nodejs_14`
-* [`node16`](/nodejs/16)
-  * `ghcr.io/pastanetwork/yolks:nodejs_16`
-* [`node17`](/nodejs/17)
-  * `ghcr.io/pastanetwork/yolks:nodejs_17`
-* [`node18`](/nodejs/18)
-  * `ghcr.io/pastanetwork/yolks:nodejs_18`
-* [`node19`](/nodejs/19)
-  * `ghcr.io/pastanetwork/yolks:nodejs_19`
 * [`node20`](/nodejs/20)
   * `ghcr.io/pastanetwork/yolks:nodejs_20`
 * [`node21`](/nodejs/21)
@@ -250,6 +246,12 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:nodejs_22`  
 * [`node23`](/nodejs/23)
   * `ghcr.io/pastanetwork/yolks:nodejs_23`
+* [`node24`](/nodejs/24)
+  * `ghcr.io/pastanetwork/yolks:nodejs_24` 
+* [`node25`](/nodejs/25)
+  * `ghcr.io/pastanetwork/yolks:nodejs_25`
+* [`node26`](/nodejs/26)
+  * `ghcr.io/pastanetwork/yolks:nodejs_26`
   
 ### [PostgreSQL](/postgres)
 
@@ -264,7 +266,13 @@ is tagged correctly.
   * [`Postgres 13`](/postgres/13)
     * `ghcr.io/pastanetwork/yolks:postgres_13`
   * [`Postgres 14`](/postgres/14)
-    * `ghcr.io/pastanetwork/yolks:postgres_14`  
+    * `ghcr.io/pastanetwork/yolks:postgres_14`
+  * [`Postgres 16`](/postgres/16)
+    * `ghcr.io/pastanetwork/yolks:postgres_16`
+  * [`Postgres 17`](/postgres/17)
+    * `ghcr.io/pastanetwork/yolks:postgres_17`
+  * [`Postgres 18`](/postgres/18)
+    * `ghcr.io/pastanetwork/yolks:postgres_18`
 
 ### [Python](/python)
 
@@ -282,6 +290,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:python_3.12`
 * [`python3.13`](/python/3.13)
   * `ghcr.io/pastanetwork/yolks:python_3.13`
+* [`python3.14`](/python/3.14)
+  * `ghcr.io/pastanetwork/yolks:python_3.14`
 
 ### [Redis](/redis)
 
@@ -291,6 +301,8 @@ is tagged correctly.
     * `ghcr.io/pastanetwork/yolks:redis_6`
   * [`Redis 7`](/redis/7)
     * `ghcr.io/pastanetwork/yolks:redis_7`
+  * [`Redis 8`](/redis/8)
+    * `ghcr.io/pastanetwork/yolks:redis_8`    
 
 ### [Rust](/rust)
 
@@ -302,14 +314,16 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:rust_latest`
 
 ### [SteamCMD](/steamcmd)
-* [`SteamCMD Debian lastest`](/steamcmd/debian)
+* [`SteamCMD Debian latest`](/steamcmd/debian)
   * `ghcr.io/pastanetwork/steamcmd:debian`
 * [`SteamCMD Debian Dotnet`](/steamcmd/dotnet)
   * `ghcr.io/pastanetwork/steamcmd:dotnet`
 * [`SteamCMD Proton`](/steamcmd/proton)
   * `ghcr.io/pastanetwork/steamcmd:proton`
-* [`SteamCMD Proton`](/steamcmd/proton_8)
+* [`SteamCMD Proton 8`](/steamcmd/proton_8)
   * `ghcr.io/pastanetwork/steamcmd:proton_8`
+* [`SteamCMD Proton 10`](/steamcmd/proton_10)
+  * `ghcr.io/pastanetwork/steamcmd:proton_10`  
 * [`SteamCMD Sniper latest`](/steamcmd/sniper)
   * `ghcr.io/pastanetwork/steamcmd:sniper`
 * [`SteamCMD Ubuntu latest LTS`](/steamcmd/ubuntu)
@@ -323,13 +337,21 @@ is tagged correctly.
 
 ### [Wine](/wine)
 
-* [`Wine`](/wine)
+* [`Wine 7`](/wine/7)
   * `ghcr.io/pastanetwork/yolks:wine_7`
+* [`Wine 8`](/wine/8)
   * `ghcr.io/pastanetwork/yolks:wine_8`
+* [`Wine 9`](/wine/9)
   * `ghcr.io/pastanetwork/yolks:wine_9`
+* [`Wine 10`](/wine/10)
   * `ghcr.io/pastanetwork/yolks:wine_10`
+  * [`Wine 10`](/wine/11)
+  * `ghcr.io/pastanetwork/yolks:wine_11`
+* [`Wine latest`](/wine/latest/)
   * `ghcr.io/pastanetwork/yolks:wine_latest`
+* [`Wine devel`](/wine/devel/)
   * `ghcr.io/pastanetwork/yolks:wine_devel`
+* [`Wine staging`](/wine/staging/)
   * `ghcr.io/pastanetwork/yolks:wine_staging`
 
 ### [Installation Images](/installers)
@@ -340,3 +362,13 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/installers:debian`
 * [`ubuntu-install`](/installers/ubuntu)
   * `ghcr.io/pastanetwork/installers:ubuntu`
+* [`java8-install`](/installers/java_8)
+  * `ghcr.io/pastanetwork/installers:java_8`
+* [`java11-install`](/installers/java_11)
+  * `ghcr.io/pastanetwork/installers:java_11`
+* [`java17-install`](/installers/java_17)
+  * `ghcr.io/pastanetwork/installers:java_17`
+* [`java21-install`](/installers/java_21)
+  * `ghcr.io/pastanetwork/installers:java_21`
+* [`java25-install`](/installers/java_25)
+  * `ghcr.io/pastanetwork/installers:java_25`

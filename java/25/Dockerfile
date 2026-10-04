@@ -1,14 +1,12 @@
-FROM        eclipse-temurin:25-jdk-noble
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-noble
 
-LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
+LABEL       author="Michael Parker" maintainer="parker@pelican.dev"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/pelican-eggs/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-# hadolint ignore=DL3015
-RUN         apt-get update -y \
-            && apt-get upgrade -y \
-            && apt-get install -y \
+RUN         apt update -y \
+            && apt install -y \
                 curl \
                 lsof \
                 ca-certificates \
@@ -23,9 +21,9 @@ RUN         apt-get update -y \
                 tini \
                 zip \
                 unzip \
-            && rm -rf /var/lib/apt/lists/*
+                jq
 
-## Setup working directory and environment
+## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
 USER        container
 ENV         USER=container HOME=/home/container
