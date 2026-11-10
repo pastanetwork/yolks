@@ -123,6 +123,12 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:erlang_23`
 * [`erlang24`](/erlang/24)
   * `ghcr.io/pastanetwork/yolks:erlang_24`
+* [`erlang25`](/erlang/25)
+  * `ghcr.io/pastanetwork/yolks:erlang_25`
+* [`erlang26`](/erlang/26)
+  * `ghcr.io/pastanetwork/yolks:erlang_26`
+* [`erlang27`](/erlang/27)
+  * `ghcr.io/pastanetwork/yolks:erlang_27`
 
 ### [Games](/games)
 
@@ -196,6 +202,8 @@ is tagged correctly.
   * `ghcr.io/pastanetwork/yolks:java_25`
 * [`java26`](/java/26)
   * `ghcr.io/pastanetwork/yolks:java_26`
+* [`java27`](/java/27)
+  * `ghcr.io/pastanetwork/yolks:java_27`
 
 ### [MariaDB](/mariadb)
 
